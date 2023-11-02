@@ -1,0 +1,74 @@
+{
+  "question": [
+    {
+      "id": "1",
+      "question_type": "select",
+      "hint": "",
+      "placeholder": "",
+      "message_error": "Votre fournisseur d’accès à internet doit être renseigné.",
+      "question": "Quel est actuellement votre fournisseur d’accès à internet ?",
+      "reponses": [
+        "Bouygues Telecom",
+        "Coriolis",
+        "Free",
+        "La Post",
+        "Orange",
+        "OVH",
+        "Red by SFR",
+        "SFR",
+        "Sosh",
+        "Bigblu",
+        "Northnet",
+        "Aucun"
+      ]
+    },
+    {
+      "id": "2",
+      "question_type": "text",
+      "hint": "Nous vous posons cette question afin de tester votre éligibilité pour vous proposer uniquement des offres disponibles chez vous (ADSL, Fibre, Câble…)",
+      "placeholder": "12 rue Mederic, 75017 Paris",
+      "message_error": "Désolé, cette adresse semble incorrecte.",
+      "question": "Quelle est votre adresse ?"
+    },
+    {
+      "id": "3",
+      "question_type": "email",
+      "hint": "Votre email ne sera communiqué qu’aux fournisseurs avec lesquels vous souhaitez être mis en relation.",
+      "placeholder": "meilleurBox@email.com",
+      "message_error": "Désolé, cette adresse email semble incorrecte.",
+      "question": "Quelle est votre adresse email ?"
+    },
+    {
+      "id": "4",
+      "question_type": "groupe",
+      "question": "Vos Coordonnées ?",
+      "questions": 
+      [
+        {
+          "id": "4.1",
+          "question": "Quel est votre nom ?",
+          "question_type": "text",
+          "hint": "",
+          "placeholder": "Votre Nom...",
+          "message_error": "Désolé, ce nom semble incorrect."
+        },
+        {
+          "id": "4.2",
+          "question": "Quel est votre prénom ?",
+          "question_type": "text",
+          "hint": "",
+          "placeholder": "Votre Prénom...",
+          "message_error": "Désolé, ce prénom semble incorrect."
+        },
+        {
+          "id": "4.3",
+          "question": "Quel est votre numéro mobile ?",
+          "question_type": "text",
+          "hint": "",
+          "placeholder": "Votre Numéro Mobile EX(06 XX XX XX XX)",
+          "message_error": "Désolé, ce numéro mobile semble incorrect."
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@
   "question": [
     {
       "id": "1",
+      "title": "Votre fournisseur",
       "question_type": "select",
       "hint": "",
       "placeholder": "",
@@ -24,6 +25,7 @@
     },
     {
       "id": "2",
+      "title": "Votre adresse",
       "question_type": "text",
       "hint": "Nous vous posons cette question afin de tester votre éligibilité pour vous proposer uniquement des offres disponibles chez vous (ADSL, Fibre, Câble…)",
       "placeholder": "12 rue Mederic, 75017 Paris",
@@ -32,6 +34,7 @@
     },
     {
       "id": "3",
+      "title": "Vos email",
       "question_type": "email",
       "hint": "Votre email ne sera communiqué qu’aux fournisseurs avec lesquels vous souhaitez être mis en relation.",
       "placeholder": "meilleurBox@email.com",
@@ -41,9 +44,9 @@
     {
       "id": "4",
       "question_type": "groupe",
+      "title": "Vos coordonnées",
       "question": "Vos Coordonnées ?",
-      "questions": 
-      [
+      "questions": [
         {
           "id": "4.1",
           "question": "Quel est votre nom ?",

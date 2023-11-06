@@ -1,46 +1,62 @@
 import React from "react";
 import "./Question.css";
-import { Select, Option } from "@material-tailwind/react";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import { MenuItem } from "@mui/material";
+import { useState } from "react";
 
 export default function Question(props) {
   const question = props.question;
   let type = question.question_type;
 
+  const [fournisseur,setFournisseur] = useState('');
+
   return (
     <div className="">
       {type === "text" && (
         <div>
-          <h1>{question.question}</h1>
-          <p>{question.hint}</p>
+          <h1 className="py-4 text-xl text-textBlue">{question.question}</h1>
+          <p>{question?.hint}</p>
           <input type="text" />
         </div>
       )}
       {type === "select" && (
         <div>
-          <h1 className="text-textBlue text-xl">{question.question}</h1>
-          <Select label="Select Version">
+          <h1 className="py-4 text-xl text-textBlue">{question.question}</h1>
+          {/* <select class="transform rounded border-2 border-blue-500 bg-white p-4 text-blue-500 transition-transform hover:scale-105 focus:border-blue-700">
             {question.reponses.map((reponse, index) => (
-              <Option key={index} value={reponse}>
+              <option key={index} value={reponse}>
                 {reponse}
-              </Option>
+              </option>
+            ))}
+          </select> */}
+          <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={question.reponses[0]}
+            label={question.question}
+            onChange={handleChange}
+
+          >
+            {question.reponses.map((reponse, index) => (
+              <MenuItem key={index} value={reponse}>
+                {reponse}
+              </MenuItem>
             ))}
           </Select>
-          <button className="rounded-xl bg-gradient-to-br from-[#FFC837] to-[#FF6108] px-5 py-3 text-base font-medium text-white transition duration-200 hover:shadow-lg hover:shadow-[#FFC837]/50">
-            Button 9
-          </button>
         </div>
       )}
       {type === "email" && (
         <div>
-          <h1 className="text-xl">{question.question}</h1>
-          <p>{question.hint}</p>
+          <h1 className="py-4 text-xl text-textBlue">{question.question}</h1>
+          <p>{question?.hint}</p>
           <input type="email" />
         </div>
       )}
       {type === "groupe" && (
         <div>
-          <h1>{question.question}</h1>
-          <p>{question.hint}</p>
+          <p>{question?.hint}</p>
           {question.questions.map((nestedQuestion, index) => (
             <Question key={index} question={nestedQuestion} />
           ))}

@@ -24,3 +24,15 @@ div .progress-bar {
     box-shadow: 0 0 20px 10px rgba(0, 0, 255, 0);
   }
 }
+
+
+select {
+  font-size: 46px; /* Change the font size as desired */
+  font-weight: bold; /* Change the font weight as desired (bold, normal, etc.) */
+}
+
+/* CSS styles for the options within the select element */
+select option {
+  font-size: 14px; /* Change the font size of the options */
+  font-weight: normal; /* Change the font weight of the options (normal, bold, etc.) */
+}

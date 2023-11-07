@@ -1,0 +1,49 @@
+.card {
+  display: flex;
+  gap: 20px;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  width: 55%;
+}
+
+.card img {
+  width: 50px;
+  aspect-ratio: 1/1;
+}
+
+.card div h1 {
+  color: #2a3775;
+  font-size: 19px;
+  line-height: 20.8px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.card div p {
+  color: #7f94a9;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+@media (max-width: 700px) {
+  .card div h1 {
+    color: #2a3775;
+    font-size: 16px;
+    line-height: 20.8px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .card div p {
+    color: #7f94a9;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  .card {
+    width: 90%;
+  }
+  .main {
+    width: 90%;
+  }
+}

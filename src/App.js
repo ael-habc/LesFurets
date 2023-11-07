@@ -29,25 +29,18 @@ function App() {
     getFournisseur();
   }, []);
 
-  async function getFournisseur() {
-    const response = await axios.get("http://localhost:8000/users");
-    console.log(response.data);
-  }
-
-  async function userSend(user) {
-    const response = await axios.post("http://localhost:8000/users", user);
-    console.log(response.data);
-  }
-
   const [number, setNumber] = useState(0);
-  const [end, setEnd] = useState(false);
   const [fournisseur, setFournisseur] = useState("Selectionner un fournisseur");
   const [email, setEmail] = useState("");
   const [addresse, setAddresse] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [prenom, setPrenom] = useState("");
-  const [user, setUser] = useState({});
+
+  async function getFournisseur() {
+    const response = await axios.get("http://localhost:8000/users");
+    console.log(response.data);
+  }
 
   const emailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -124,8 +117,7 @@ function App() {
       } else {
         setNumber(number + 1);
       }
-    }
-    else if (number === 3) {
+    } else if (number === 3) {
       if (nameValidation(name) !== true) {
         toast.error(nameValidation(name));
       } else if (prenomValidation(prenom) !== true) {
@@ -133,7 +125,7 @@ function App() {
       } else if (phoneValidation(phone) !== true) {
         toast.error(phoneValidation(phone));
       } else {
-        console.log('ok')
+        console.log("ok");
         const userData = {
           fournisseur: fournisseur,
           addresse: addresse,
@@ -142,16 +134,15 @@ function App() {
           prenom: prenom,
           phone: phone,
         };
-        
-        axios.post('http://localhost:8000/users', userData)
-          .then(response => {
-            console.log('User created successfully:', response.data);
-          })
-          .catch(error => {
-            console.error('Error creating user:', error);
-          });
 
-        
+        axios
+          .post("http://localhost:8000/users", userData)
+          .then((response) => {
+            console.log("User created successfully:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error creating user:", error);
+          });
       }
     }
   };

@@ -22,6 +22,8 @@ import TextField from "@mui/material/TextField";
 
 import { Toaster, toast } from "react-hot-toast";
 
+import Modal1 from "./components/Modal1";
+
 import axios from "axios";
 
 function App() {
@@ -148,7 +150,7 @@ function App() {
   };
 
   return (
-    <div className="flex w-screen flex-col items-center justify-center main">
+    <div className="flex w-screen flex-col items-center justify-center ">
       <Toaster />
       <nav className="flex w-screen p-5 pl-8 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:py-4">
         <a href="/" className="h-auto">
@@ -159,12 +161,12 @@ function App() {
         <div className=" flex gap-4 w-full justify-between">
           <Progress
             value={100}
-            color="blue"
             className="mb-5 h-3 w-1/3 rounded-full"
             style={{
               width: `${((number + 1) / questions.question.length) * 100}%`,
               transition: "width 0.5s ease-in-out",
               alignSelf: "flex-start",
+              backgroundColor: "blue",
             }}
           />
         </div>
@@ -179,9 +181,9 @@ function App() {
               alignSelf: "flex-start",
             }}
             onClick={() => setNumber(number - 1)}
-            className="group relative mr-4 inline-flex items-center overflow-hidden rounded-[16px] border-2 border-indigo-600 px-12 py-3 text-lg font-medium text-indigo-600 hover:bg-gray-50 hover:text-white"
+            className="group relative mr-4 inline-flex items-center overflow-hidden rounded-[16px] border-2 border-blue-600 px-12 py-3 text-lg font-medium text-blue-600 hover:bg-gray-50 hover:text-white"
           >
-            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-indigo-600 opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-blue-600 opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
             <span className="ease absolute left-0 flex h-10 w-10 -translate-x-full transform items-center justify-start duration-300 group-hover:translate-x-4">
               <svg
                 className="h-5 w-5 rotate-180 transform"
@@ -209,7 +211,9 @@ function App() {
         <div className="w-full flex justify-start">
           {number === 1 && (
             <div className="flex flex-col gap-4 w-full md:w-1/2">
-              <p className="text-">{questions.question[number]?.hint}</p>
+              <p className="text-gray-600">
+                {questions.question[number]?.hint}
+              </p>
               <TextField
                 id="adresse"
                 label="adresse"
@@ -238,7 +242,9 @@ function App() {
           )}
           {number === 2 && (
             <div className="flex flex-col gap-4 w-full md:w-1/2">
-              <p>{questions.question[number]?.hint}</p>
+              <p className="text-gray-600">
+                {questions.question[number]?.hint}
+              </p>
               <TextField
                 id="email"
                 label="email"
@@ -251,7 +257,9 @@ function App() {
           {number === 3 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <p>{questions.question[number]?.hint}</p>
+                <p className="text-gray-600">
+                  {questions.question[number]?.hint}
+                </p>
                 <h1 className="py-4 text-lg md:text-xl text-textBlue">
                   {questions.question[number].questions[0].question}
                 </h1>
@@ -299,9 +307,9 @@ function App() {
             style={{
               alignSelf: "flex-start",
             }}
-            className="group relative inline-flex items-center overflow-hidden rounded-[16px] mt-4 border-2 border-indigo-600 px-12 py-3 text-lg font-medium text-indigo-600 hover:bg-gray-50 hover:text-white"
+            className="group relative inline-flex items-center overflow-hidden rounded-[16px] mt-4 border-2 border-blue-600 px-12 py-3 text-lg font-medium text-blue-600 hover:bg-gray-50 hover:text-white"
           >
-            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-indigo-600 opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+            <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-blue-600 opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
             <span className="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-300 group-hover:translate-x-0">
               <svg
                 className="h-5 w-5"
@@ -342,27 +350,32 @@ function App() {
       <br />
       <br />
       <br />
-      <div className="card m-auto">
-        <img src={img1} alt="image" className="w-10" />
+      <div className="cards m-auto">
+        <img src={img1} alt="chrono" className="w-10" />
         <div>
           <h1>{contenu.cards[0].title}</h1>
           <p>{contenu.cards[0].description}</p>
         </div>
       </div>
-      <div className="card">
-        <img src={img2} alt="image" className="w-10" />
+      <div className="cards">
+        <img src={img2} alt="choose" className="w-10" />
         <div>
           <h1>{contenu.cards[1].title}</h1>
           <p>{contenu.cards[1].description}</p>
         </div>
       </div>
-      <div className="card">
-        <img src={img3} alt="image" className="w-10" />
+      <div className="cards">
+        <img src={img3} alt="analyse" className="w-10" />
         <div>
           <h1>{contenu.cards[2].title}</h1>
           <p>{contenu.cards[2].description}</p>
         </div>
       </div>
+      <footer className="w-full bg-slate-200 h-14">
+        <div className="flex justify-center items-center h-full">
+          <Modal1 />
+        </div>
+      </footer>
     </div>
   );
 }

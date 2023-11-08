@@ -12,6 +12,8 @@ import img3 from "./assests/images/analysis.png";
 import questions from "./assests/questions/questions.json";
 import contenu from "./assests/contenu.json";
 
+import './components/Card.css';
+
 //Material Tailwind (UI)
 import { Progress } from "@material-tailwind/react";
 
@@ -23,6 +25,8 @@ import TextField from "@mui/material/TextField";
 import { Toaster, toast } from "react-hot-toast";
 
 import Modal1 from "./components/Modal1";
+import Modal2 from "./components/Modal2";
+import Modal3 from "./components/Modal3";
 
 import axios from "axios";
 
@@ -170,7 +174,7 @@ function App() {
             }}
           />
         </div>
-        <div className="relative mx-auto w-full max-w-2xl mb-12 mt-7 text-center text-4xl text-customGray ">
+        <div className="relative mx-auto w-full max-w-2xl mb-12 text-center text-4xl text-customGray ">
           {questions.question[number].title}
         </div>
 
@@ -371,10 +375,10 @@ function App() {
           <p>{contenu.cards[2].description}</p>
         </div>
       </div>
-      <footer className="w-full bg-slate-200 h-14">
-        <div className="flex justify-center items-center h-full">
+      <footer className="flex w-screen bg-slate-200 h-auto px-3 py-3 gap-10 justify-center">
           <Modal1 />
-        </div>
+          <Modal2 />
+          <Modal3 />
       </footer>
     </div>
   );

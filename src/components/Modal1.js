@@ -5,7 +5,7 @@ function Modal1() {
   const [show, setShow] = useState(false);
   return (
     <>
-      <p className="text-blue-600" onClick={() => setShow(true)}>
+      <p className="text-blue-600 cursor-pointer	" onClick={() => setShow(true)}>
         Termes et conditions génerale d'utilisation
       </p>
       <Modal

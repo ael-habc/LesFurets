@@ -8,6 +8,15 @@
   margin: 20px 0;
 }
 
+.cardsMain {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding:0 50px;
+}
+
 .cards img {
   width: 50px;
   aspect-ratio: 1/1;
@@ -26,6 +35,45 @@
   line-height: 24px;
   font-weight: 400;
 }
+
+.ant-select-selection-item {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  overflow: visible;
+  font-weight: bolder;
+}
+.ant-select-dropdown .ant-select-item {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+  border-bottom: #cddbe9a7 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rc-virtual-list-holder-inner {
+  padding-left: 15px;
+  overflow: visible;
+}
+
+input {
+  font-size: 20px !important;
+  padding: 12px 15px 25px 15px !important;
+}
+label {
+  font-size: 19px !important;
+  margin: 0 0 0 -4px !important;
+}
+
+
+.ant-checkbox-wrapper span:nth-child(2)  p{
+  display: inline;
+}
+.ant-select-dropdown .ant-select-item:hover {
+  color: blue;
+  transform: scale(1.05);
+  overflow: visible;
+  text-shadow: 2px 0px 7px rgba(0, 11, 239, 0.73);}
 
 @media (max-width: 700px) {
   .cards div h1 {
@@ -46,5 +94,9 @@
   }
   .main {
     width: 90%;
+  }
+  .cardsMain {
+    flex-direction: column;
+    gap:0px;
   }
 }

@@ -73,7 +73,7 @@ label {
   color: blue;
   transform: scale(1.05);
   overflow: visible;
-  text-shadow: 2px 0px 7px rgba(0, 11, 239, 0.73);}
+  text-shadow: 2px 0px 4px rgba(0, 11, 239, 0.73);}
 
 @media (max-width: 700px) {
   .cards div h1 {
@@ -90,7 +90,7 @@ label {
     font-weight: 400;
   }
   .cards {
-    width: 90%;
+    width: 100%;
   }
   .main {
     width: 90%;
@@ -98,5 +98,18 @@ label {
   .cardsMain {
     flex-direction: column;
     gap:0px;
+  }
+  .foot {
+    flex-direction: column;
+    gap: 5px;
+    padding: 20px 80px;
+  }
+  .foot p {
+    border-bottom: rgba(88, 88, 88, 0.103) 1px solid;
+  }
+  input {
+    font-size: 20px !important;
+    padding: 12px 15px 25px 15px !important;
+    width: 100%;
   }
 }

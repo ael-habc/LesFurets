@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //Assets (Images)
 import logo from "./assests/images/logo2.png";
 import img1 from "./assests/images/stopwatch.png";
-import img2 from "./assests/images/touch.png";
+import img2 from "./assests/images/icon2.png";
 import img3 from "./assests/images/analysis.png";
-
+import logo3 from "./assests/images/logo3.png";
 
 //CSS (Styles)
 import "./App.css";
@@ -19,28 +19,41 @@ import contenu from "./assests/contenu.json";
 import { Select } from "antd";
 import TextField from "@mui/material/TextField";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { Checkbox } from "antd";
 
 //Components
 import Modal1 from "./components/Modal1";
 import Modal2 from "./components/Modal2";
 import Modal3 from "./components/Modal3";
 
-import { Checkbox } from "antd";
-
+//Axios
 import axios from "axios";
 
 function App() {
-  // useEffect(() => {
-  //   getFournisseur();
-  // }, []);
+  useEffect(() => {
+    const faviconElement = document.createElement("link");
+    faviconElement.rel = "icon";
+    faviconElement.href = logo3; // Use the imported favicon image as the href
+    document.head.appendChild(faviconElement);
+    return () => {
+      // Cleanup: remove the dynamically added link element when the component is unmounted
+      document.head.removeChild(faviconElement);
+    };
+  }, []);
+  // States (navigtion variables)
+  const [number, setNumber] = useState(3);
+  const [seccess, setSeccess] = useState(false);
 
-  const [number, setNumber] = useState(0);
-  const [fournisseur, setFournisseur] = useState("Selectionner un fournisseur");
+  // States (form variables)
+  const [fournisseur, setFournisseur] = useState("Sélectionner un fournisseur");
   const [email, setEmail] = useState("");
   const [addresse, setAddresse] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [check1, setCheck1] = useState(false);
+  const [check2, setCheck2] = useState(false);
 
+  // States (form errors)
   const [fournisseurError, setFournisseurError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [addresseError, setAddresseError] = useState("");
@@ -49,15 +62,7 @@ function App() {
   const [check1Error, setCheck1Error] = useState("");
   const [check2Error, setCheck2Error] = useState("");
 
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [seccess, setSeccess] = useState(false);
-
-  // async function getFournisseur() {
-  //   const response = await axios.get("http://localhost:8000/users");
-  //   console.log(response.data);
-  // }
-
+  // Functions (form validation)
   const emailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!email)
@@ -66,6 +71,7 @@ function App() {
       return "Format d'adresse e-mail invalide. Veuillez entrer une adresse e-mail valide.";
     else return true;
   };
+
   const phoneValidation = (phone) => {
     const regex = /^(\+33|0)([ \-_/]*)(\d[ \-_/]*){9}$/;
     if (!phone)
@@ -74,8 +80,9 @@ function App() {
       return "Format de numéro de téléphone invalide. Veuillez entrer un numéro de téléphone valide.";
     else return true;
   };
+
   const nameValidation = (name) => {
-    const regex = /^[a-zA-Z]+$/;
+    const regex = /^[a-zA-Z ]+$/;
     if (!name) return "Le nom est obligatoire. Veuillez entrer un nom valide.";
     else if (!regex.test(name))
       return "Format de nom invalide. Veuillez entrer un nom valide.";
@@ -123,9 +130,10 @@ function App() {
     setCheck2(e.target.checked);
   };
 
+  // Function (form submit)
   const handleSubmit = () => {
     if (number === 0) {
-      if (fournisseur === "Selectionner un fournisseur") {
+      if (fournisseur === "Sélectionner un fournisseur") {
         setFournisseurError("Veuillez selectionner un fournisseur");
       } else {
         setFournisseurError("");
@@ -146,6 +154,21 @@ function App() {
       } else {
         setEmailError("");
         setPhoneError("");
+        // collect the partial data
+        const userDataPart = {
+          fournisseur: fournisseur,
+          addresse: addresse,
+          email: email,
+          phone: phone,
+        };
+        axios
+          .post("http://localhost:8000/users/part", userDataPart)
+          .then((response) => {
+            console.log("User created successfully:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error creating user:", error);
+          });
         setNumber(number + 1);
       }
     } else if (number === 3) {
@@ -196,6 +219,8 @@ function App() {
                 now={100}
                 style={{
                   width: `${((number + 1) / questions.question.length) * 100}%`,
+                  transition: "width 0.5s ease-in-out",
+                  height: "5px",
                 }}
               />
               <ProgressBar
@@ -203,6 +228,7 @@ function App() {
                 style={{
                   width: `${((number + 1) / questions.question.length) * 100}%`,
                   transition: "width 0.5s ease-in-out",
+                  height: "5px",
                   alignSelf: "flex-start",
                 }}
               />
@@ -211,6 +237,7 @@ function App() {
                 style={{
                   width: `${((number + 1) / questions.question.length) * 100}%`,
                   transition: "width 0.5s ease-in-out",
+                  height: "5px",
                   alignSelf: "flex-start",
                 }}
               />
@@ -220,6 +247,7 @@ function App() {
                   width: `${((number + 1) / questions.question.length) * 100}%`,
                   transition: "width 0.5s ease-in-out",
                   alignSelf: "flex-start",
+                  height: "5px",
                   marginBottom: "20px",
                 }}
               />
@@ -260,7 +288,7 @@ function App() {
             <h1 className="py-4 text-2xl font-bold text-textBlue self-start">
               {questions.question[number].question}
             </h1>
-            <div className="w-full flex justify-start">
+            <div className="w-full flex justify-start bg-white">
               {number === 1 && (
                 <div className="flex flex-col gap-4 w-4/4">
                   <p className="text-gray-600 text-xl">
@@ -275,6 +303,9 @@ function App() {
                     className="w-3/4"
                     value={addresse}
                     onChange={handleChangeAddresse}
+                    style={{
+                      borderWidth: "5px",
+                    }}
                   />
                 </div>
               )}
@@ -378,10 +409,13 @@ function App() {
                 <br />
                 <br />
 
-                <Checkbox onChange={(e) => handleChangeCheck1(e)}>
+                <Checkbox onChange={(e) => handleChangeCheck1(e)}
+                style={{fontSize:"12px"}}
+                >
                   J'accepte <Modal1 /> et d'être contacté par nos partenaires
                   Box Internet si je demande à être mis en relation pour faire
                   des économies.
+                  
                 </Checkbox>
                 <p className="text-red-500 text-sm justify-start mt-1">
                   {check1Error}
@@ -459,7 +493,7 @@ function App() {
               </div>
             </div>
             <div className="cards">
-              <img src={img2} alt="choose" className="w-10" />
+              <img src={img2} alt="choose" className="w-120" />
               <div>
                 <h1>{contenu.cards[1].title}</h1>
                 <p>{contenu.cards[1].description}</p>
@@ -481,7 +515,7 @@ function App() {
         </div>
       )}
       {seccess && (
-        <div class="flex items-center justify-center h-screen">
+        <div class="flex items-center justify-center h-auto mt-56">
           <div class="w-2/4 h-2/4 p-1 rounded shadow-lg bg-gradient-to-r from-purple-500 via-green-500 to-blue-500">
             <div class=" h-full flex flex-col items-center p-4 gap-2 space-y-2 bg-white">
               <svg
@@ -501,11 +535,11 @@ function App() {
               <h1 class="text-4xl font-bold  text-transparent text-center bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
                 Votre demande de comparaison a été enregistrée.
               </h1>
-              <p className="text-center text-xl" >
+              <p className="text-center text-xl">
                 Un de nos conseillers vous contactera bientôt avec la meilleure
                 offre correspondant à vos besoins et votre budget.
               </p>
-              <p class="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded rounded-full hover:bg-indigo-700 focus:outline-none focus:ring">
+              <p class="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded  hover:bg-indigo-700 focus:outline-none focus:ring">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="w-3 h-3 mr-2"
@@ -520,15 +554,16 @@ function App() {
                     d="M7 16l-4-4m0 0l4-4m-4 4h18"
                   />
                 </svg>
+                <a href="/" className="text-white">
+                  Retour à l'accueil
+                </a>
               </p>
             </div>
           </div>
-          {
-            setTimeout(() => {
-              window.location.reload();
-              setSeccess(false);
-            }, 6000)
-          }
+          {setTimeout(() => {
+            window.location.reload();
+            setSeccess(false);
+          }, 6000)}
         </div>
       )}
     </>

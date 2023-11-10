@@ -2,20 +2,20 @@
   "cards": [
     {
       "id": 1,
-      "title": "Comparez plus de 20 abonnements Internet en 2 minutes chrono",
-      "description": "Sans nous, ça vous prendrait au moins un samedi après-midi !",
+      "title": "Comparez plusieurs offres Internet en quelques clics.",
+      "description": "Avec nous, vous comparez les offres Internet en 2 minutes. Sans nous, vous passeriez au moins une demi-journée à le faire.",
       "image": "./assests/images/analysis.png"
     },
     {
       "id": 2,
-      "title": "Obtenez uniquement des offres adaptées à votre profil",
-      "description": "ADSL ou fibre, nous prenons en compte votre éligibilité pour vous faire gagner du temps",
+      "title": "Trouvez uniquement les offres qui vous correspondent parfaitement.",
+      "description": "Pour gagner du temps, nous vérifions votre éligibilité à la fibre ou à l'ADSL afin de vous proposer les offres qui vous correspondent,",
       "image": "./assests/images/analysis.png"
     },
     {
       "id": 3,
-      "title": "Étudiez les propositions et choisissez la meilleure",
-      "description": "Passez en revue les services et les tarifs avant de prendre votre décision",
+      "title": "Analysez les propositions et sélectionnez la plus avantageuse.",
+      "description": "Comparez les services et les tarifs avant de faire votre choix.",
       "image": "./assests/images/analysis.png"
     }
   ]

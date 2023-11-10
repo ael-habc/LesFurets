@@ -14,11 +14,15 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding:0 50px;
+  padding: 0 50px;
 }
 
 .cards img {
   width: 50px;
+  aspect-ratio: 1/1;
+}
+.cards:nth-child(2) img {
+  width:60px;
   aspect-ratio: 1/1;
 }
 
@@ -41,6 +45,7 @@
   color: rgb(0, 0, 0);
   overflow: visible;
   font-weight: bolder;
+  background-color: white;
 }
 .ant-select-dropdown .ant-select-item {
   font-size: 20px;
@@ -49,31 +54,71 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+}
+.ant-select:focus {
+  outline: none !important; /* Remove the default focus outline */
+  box-shadow:
+    0 4px 8px 0 rgba(47, 129, 237, 0.103),
+    0 6px 20px 0 rgba(47, 129, 237, 0.097) !important;
+  background-color: rgba(
+    231,
+    255,
+    255,
+    0.5
+  ) !important; /* Increase the size and opacity of the shadow */
 }
 
 .rc-virtual-list-holder-inner {
   padding-left: 15px;
   overflow: visible;
+  background-color: white;
 }
-
+.ant-select-arrow {
+  color: #2f80ed !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
 input {
   font-size: 20px !important;
   padding: 12px 15px 25px 15px !important;
+  background-color: white !;
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  border-width: 2px;
+}
+
+input:focus {
+  outline: none !important; /* Remove the default focus outline */
+  box-shadow:
+    0 4px 8px 0 rgba(47, 129, 237, 0.2),
+    0 6px 20px 0 rgba(47, 129, 237, 0.2) !important;
+  background-color: rgba(
+    231,
+    255,
+    255,
+    0.5
+  ); /* Increase the size and opacity of the shadow */
 }
 label {
   font-size: 19px !important;
   margin: 0 0 0 -4px !important;
 }
+.ant-checkbox-wrapper span {
+  font-size: 14px !important;
+}
 
-
-.ant-checkbox-wrapper span:nth-child(2)  p{
+.ant-checkbox-wrapper span:nth-child(2) p {
+  font-weight: 700 !important;
   display: inline;
 }
+
 .ant-select-dropdown .ant-select-item:hover {
   color: blue;
   transform: scale(1.05);
   overflow: visible;
-  text-shadow: 2px 0px 4px rgba(0, 11, 239, 0.73);}
+  text-shadow: 2px 0px 4px rgba(0, 11, 239, 0.73);
+}
 
 @media (max-width: 700px) {
   .cards div h1 {
@@ -97,7 +142,7 @@ label {
   }
   .cardsMain {
     flex-direction: column;
-    gap:0px;
+    gap: 0px;
   }
   .foot {
     flex-direction: column;

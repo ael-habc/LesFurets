@@ -6,7 +6,6 @@ import img1 from "./assests/images/stopwatch.png";
 import img2 from "./assests/images/touch.png";
 import img3 from "./assests/images/analysis.png";
 
-import merci from "./assests/images/appreciate.svg";
 
 //CSS (Styles)
 import "./App.css";
@@ -375,16 +374,18 @@ function App() {
             )}
 
             {number === questions.question.length - 1 && (
-              <div >
+              <div>
                 <br />
                 <br />
 
-                <Checkbox onChange={(e)=>handleChangeCheck1(e) }>
+                <Checkbox onChange={(e) => handleChangeCheck1(e)}>
                   J'accepte <Modal1 /> et d'être contacté par nos partenaires
                   Box Internet si je demande à être mis en relation pour faire
                   des économies.
                 </Checkbox>
-                <p className="text-red-500 text-sm justify-start mt-1">{check1Error}</p>
+                <p className="text-red-500 text-sm justify-start mt-1">
+                  {check1Error}
+                </p>
                 <br />
                 <Checkbox
                   onChange={(e) => handleChangeCheck2(e)}
@@ -480,19 +481,54 @@ function App() {
         </div>
       )}
       {seccess && (
-        <div className="flex flex-col justify-center items-center pt-16 gap-5">
-          <img src={merci} alt="merci" className="w-96" />
-          <h1 className="text-2xl font-bold">
-            Votre demande de comparaison a été enregistrée.
-          </h1>
-          <p className="text-xl">
-            Un de nos conseillers vous contactera bientôt avec la meilleure
-            offre correspondant à vos besoins et votre budget.
-          </p>
-          {setTimeout(() => {
-            window.location.reload();
-            setSeccess(false);
-          }, 4000)}
+        <div class="flex items-center justify-center h-screen">
+          <div class="w-2/4 h-2/4 p-1 rounded shadow-lg bg-gradient-to-r from-purple-500 via-green-500 to-blue-500">
+            <div class=" h-full flex flex-col items-center p-4 gap-2 space-y-2 bg-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="text-green-600 w-28 h-28"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h1 class="text-4xl font-bold  text-transparent text-center bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+                Votre demande de comparaison a été enregistrée.
+              </h1>
+              <p className="text-center text-xl" >
+                Un de nos conseillers vous contactera bientôt avec la meilleure
+                offre correspondant à vos besoins et votre budget.
+              </p>
+              <p class="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded rounded-full hover:bg-indigo-700 focus:outline-none focus:ring">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-3 h-3 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7 16l-4-4m0 0l4-4m-4 4h18"
+                  />
+                </svg>
+              </p>
+            </div>
+          </div>
+          {
+            setTimeout(() => {
+              window.location.reload();
+              setSeccess(false);
+            }, 6000)
+          }
         </div>
       )}
     </>

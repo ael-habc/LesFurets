@@ -41,7 +41,7 @@ function App() {
     };
   }, []);
   // States (navigtion variables)
-  const [number, setNumber] = useState(3);
+  const [number, setNumber] = useState(0);
   const [seccess, setSeccess] = useState(false);
 
   // States (form variables)

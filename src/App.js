@@ -162,7 +162,7 @@ function App() {
           phone: phone,
         };
         axios
-          .post("http://localhost:8000/users/part", userDataPart)
+          .post("http://51.178.130.67:2200/users/part", userDataPart)
           .then((response) => {
             console.log("User created successfully:", response.data);
           })
@@ -189,7 +189,7 @@ function App() {
         };
 
         axios
-          .post("http://localhost:8000/users", userData)
+          .post("http://51.178.130.67:2200/users", userData)
           .then((response) => {
             console.log("User created successfully:", response.data);
             setSeccess(true);
@@ -409,13 +409,13 @@ function App() {
                 <br />
                 <br />
 
-                <Checkbox onChange={(e) => handleChangeCheck1(e)}
-                style={{fontSize:"12px"}}
+                <Checkbox
+                  onChange={(e) => handleChangeCheck1(e)}
+                  style={{ fontSize: "12px" }}
                 >
                   J'accepte <Modal1 /> et d'être contacté par nos partenaires
                   Box Internet si je demande à être mis en relation pour faire
                   des économies.
-                  
                 </Checkbox>
                 <p className="text-red-500 text-sm justify-start mt-1">
                   {check1Error}

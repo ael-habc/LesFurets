@@ -143,6 +143,7 @@ label {
   .cardsMain {
     flex-direction: column;
     gap: 0px;
+    padding: 0 10px;
   }
   .foot {
     flex-direction: column;

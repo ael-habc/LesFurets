@@ -161,14 +161,14 @@ function App() {
           email: email,
           phone: phone,
         };
-        axios
-          .post("http://51.178.130.67:2200/users/part", userDataPart)
-          .then((response) => {
-            console.log("User created successfully:", response.data);
-          })
-          .catch((error) => {
-            console.error("Error creating user:", error);
-          });
+        // axios
+        //   .post("http://51.178.130.67:2200/users/part", userDataPart)
+        //   .then((response) => {
+        //     console.log("User created successfully:", response.data);
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error creating user:", error);
+        //   });
         setNumber(number + 1);
       }
     } else if (number === 3) {
@@ -188,15 +188,15 @@ function App() {
           phone: phone,
         };
 
-        axios
-          .post("http://51.178.130.67:2200/users", userData)
-          .then((response) => {
-            console.log("User created successfully:", response.data);
-            setSeccess(true);
-          })
-          .catch((error) => {
-            console.error("Error creating user:", error);
-          });
+        // axios
+        //   .post("http://51.178.130.67:2200/users", userData)
+        //   .then((response) => {
+        //     console.log("User created successfully:", response.data);
+        //     setSeccess(true);
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error creating user:", error);
+        //   });
       }
     }
   };
@@ -257,8 +257,7 @@ function App() {
             </div>
 
             {number > 0 && (
-              <a
-                href="#_"
+              <p
                 style={{
                   alignSelf: "flex-start",
                 }}
@@ -283,14 +282,14 @@ function App() {
                   </svg>
                 </span>
                 <span className="relative">Retour</span>
-              </a>
+              </p>
             )}
             <h1 className="py-4 text-2xl font-bold text-textBlue self-start">
               {questions.question[number].question}
             </h1>
-            <div className="w-full flex justify-start bg-white">
+            <div className=" flex w-full justify-start bg-white">
               {number === 1 && (
-                <div className="flex flex-col gap-4 w-4/4">
+                <div className="flex flex-col gap-4">
                   <p className="text-gray-600 text-xl">
                     {questions.question[number]?.hint}
                   </p>
@@ -300,7 +299,7 @@ function App() {
                     label="Adresse"
                     variant="outlined"
                     helperText={addresseError}
-                    className="w-3/4"
+                    className="md:w-3/4 w-full"
                     value={addresse}
                     onChange={handleChangeAddresse}
                     style={{
@@ -339,7 +338,7 @@ function App() {
                     variant="outlined"
                     value={email}
                     helperText={emailError}
-                    className="w-2/4"
+                    className="w-3/4 md:w-2-4"
                     onChange={(e) => handleChangeEmail(e)}
                   />
                   <TextField
@@ -349,7 +348,7 @@ function App() {
                     variant="outlined"
                     value={phone}
                     helperText={phoneError}
-                    className="w-2/4"
+                    className="w-3/4 md:w-2-4"
                     onChange={(e) => handleChangePhone(e)}
                   />
                 </div>
@@ -375,8 +374,7 @@ function App() {
             <hr />
 
             {number < questions.question.length - 1 && (
-              <a
-                href="#_"
+              <p
                 onClick={() => handleSubmit()}
                 style={{
                   alignSelf: "flex-start",
@@ -401,7 +399,7 @@ function App() {
                   </svg>
                 </span>
                 <span className="relative">Suivant</span>
-              </a>
+              </p>
             )}
 
             {number === questions.question.length - 1 && (
@@ -532,17 +530,17 @@ function App() {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <h1 class="text-4xl font-bold  text-transparent text-center bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+              <h1 class="md:text-4xl text-xl font-bold  text-transparent text-center bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
                 Votre demande de comparaison a été enregistrée.
               </h1>
-              <p className="text-center text-xl">
+              <p className="text-center md:text-xl text-sm">
                 Un de nos conseillers vous contactera bientôt avec la meilleure
                 offre correspondant à vos besoins et votre budget.
               </p>
               <p class="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded  hover:bg-indigo-700 focus:outline-none focus:ring">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-3 h-3 mr-2"
+                  class="md:w-3 md:h-3 md:mr-2 w-2 h-2 mr-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
